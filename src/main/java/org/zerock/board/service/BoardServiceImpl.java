@@ -14,6 +14,7 @@ import org.zerock.board.entity.Member;
 import org.zerock.board.repository.BoardRepository;
 import org.zerock.board.repository.ReplyRepository;
 
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
@@ -43,9 +44,16 @@ public class BoardServiceImpl implements BoardService {
 
         Function<Object[], BoardDTO> fn = (entity -> entityToDto((Board) entity[0], (Member) entity[1],
                 (Long) entity[2]));
+        log.info("테스트다요");
 
-        Page<Object[]> result = repository.getBoardWithReplyCount(
-                pageRequestDTO.getPageable(Sort.by("bno").descending()));
+//        Page<Object[]> result = repository.getBoardWithReplyCount(
+//                pageRequestDTO.getPageable(Sort.by("bno").descending()));
+
+        Page<Object[]> result = repository.searchPage(
+                pageRequestDTO.getType(),
+                pageRequestDTO.getKeyword(),
+                pageRequestDTO.getPageable(Sort.by("bno").descending())
+        );
 
         return new PageResultDTO<>(result, fn);
     }

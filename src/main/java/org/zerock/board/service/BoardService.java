@@ -1,5 +1,6 @@
 package org.zerock.board.service;
 
+import lombok.extern.log4j.Log4j2;
 import org.zerock.board.dto.BoardDTO;
 import org.zerock.board.dto.PageRequestDTO;
 import org.zerock.board.dto.PageResultDTO;
@@ -7,6 +8,7 @@ import org.zerock.board.entity.Board;
 import org.zerock.board.entity.Member;
 
 import java.util.Objects;
+
 
 public interface BoardService {
     Long register(BoardDTO dto);
@@ -25,6 +27,7 @@ public interface BoardService {
     }
 
     default BoardDTO entityToDto(Board board, Member member, Long replyCount) {
+        System.out.println(board + "너냐?");
         BoardDTO boardDTO = BoardDTO.builder()
                 .bno(board.getBno())
                 .title(board.getTitle())
