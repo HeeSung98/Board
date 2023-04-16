@@ -1,6 +1,5 @@
 package org.zerock.board.service;
 
-import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -48,7 +47,7 @@ public class BoardServiceTests {
 
     @Test
     public void testRemove() {
-        Long bno = 1L;
+        Long bno = 107L;
 
         boardService.removeWithReplies(bno);
     }

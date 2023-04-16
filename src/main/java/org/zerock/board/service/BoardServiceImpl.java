@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.zerock.board.dto.BoardDTO;
 import org.zerock.board.dto.PageRequestDTO;
@@ -62,13 +63,18 @@ public class BoardServiceImpl implements BoardService {
     public BoardDTO get(Long bno) {
         Object result = repository.getBoardByBno(bno);
 
+        log.info("Object result: " + result);
+
         Object[] arr = (Object[]) result;
+
+        log.info("Object[] arr: " + arr);
 
         return entityToDto((Board)arr[0], (Member)arr[1], (Long)arr[2]);
     }
 
     @Transactional
     @Override
+
     public void removeWithReplies(Long bno) {
         replyRepository.deleteByBno(bno);
         repository.deleteById(bno);

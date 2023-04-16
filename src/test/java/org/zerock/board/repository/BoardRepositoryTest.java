@@ -17,7 +17,7 @@ import java.util.Optional;
 import java.util.stream.IntStream;
 
 @SpringBootTest
-public class BoardRepositoryTests {
+public class BoardRepositoryTest {
     @Autowired
     private BoardRepository boardRepository;
 
