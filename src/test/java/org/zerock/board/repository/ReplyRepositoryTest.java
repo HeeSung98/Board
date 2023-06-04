@@ -49,4 +49,9 @@ public class ReplyRepositoryTest {
 
         replyList.forEach(reply -> System.out.println(reply));
     }
+
+    @Test
+    public void  test() {
+
+    }
 }
